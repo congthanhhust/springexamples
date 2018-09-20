@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	   	http://www.springframework.org/schema/context
+	   	http://www.springframework.org/schema/context/spring-context-4.2.xsd"
+>
+
+
+    <bean id="sampleTemplate" abstract="true">
+        <property name="message" value="Template say Hello!"/>
+    </bean>
+    <bean id="helloWorld" class="edu.java.spring.HelloWorld">
+        <property name="clazz">
+            <bean id="helloJavaClazz" class="edu.java.spring.HelloClazz">
+                <property name="message" value="Hello Bean Inheritance"/>
+            </bean>
+        </property>
+        <constructor-arg type="java.lang.String" value="Thuan"/>
+        <constructor-arg ref="helloJavaClazz"/>
+    </bean>
+</beans>
+	   
+	   
